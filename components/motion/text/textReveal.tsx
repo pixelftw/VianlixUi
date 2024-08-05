@@ -44,7 +44,7 @@ const flip: Variants = {
   },
 };
 
-const animationVariants = {
+export const animationVariants = {
   fadeIn,
   slideIn,
   flip,
@@ -60,8 +60,8 @@ export interface TextRevealProps extends PropsWithChildren {
 }
 
 const defaultTransition: AnimationProps["transition"] = {
-  ease: cubicBezier(0.5, 1, 0.89, 1),
-  duration: 0.3,
+  ease: cubicBezier(0.33, 1, 0.68, 1),
+  duration: 0.6,
 };
 
 function TextReveal({
@@ -82,7 +82,7 @@ function TextReveal({
       className={cn("flex flex-wrap", className)}
       initial="from"
       animate={controller ?? "to"}
-      transition={{ staggerChildren: 0.1 }}
+      transition={{ staggerChildren: 0.1, ease: "easeInOut" }}
     >
       {words.map((word, i) => (
         <Word

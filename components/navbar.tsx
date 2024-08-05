@@ -1,5 +1,5 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, TwitterIcon, HexagonIcon } from "lucide-react";
+import { GithubIcon, TwitterIcon, HexagonIcon, Github } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
@@ -52,19 +52,10 @@ export function Navbar() {
             <Search />
             <div className="flex">
               <Link
-                href="https://github.com/nisabmohd/Docs-Stater-Template"
+                href="https://github.com/pixelftw/motion-components"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
-                <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
-              </Link>
-              <Link
-                href="#"
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "icon",
-                })}
-              >
-                <TwitterIcon className="h-[1.1rem] w-[1.1rem]" />
+                <Github className="h-[1.1rem] w-[1.1rem]" />
               </Link>
               <ModeToggle />
             </div>

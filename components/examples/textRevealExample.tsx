@@ -1,10 +1,21 @@
 "use client";
 import { useAnimation } from "framer-motion";
-import TextReveal, { type TextRevealProps } from "../motion/text/textReveal";
+import TextReveal, {
+  animationVariants,
+  type TextRevealProps,
+} from "../motion/text/textReveal";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { RotateCwIcon } from "lucide-react";
-import { Tabs } from "@radix-ui/react-tabs";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 export function TextRevealExample() {
   const [variant, setVariant] = useState<TextRevealProps["variant"]>("fadeIn");
@@ -12,8 +23,9 @@ export function TextRevealExample() {
   const controller = useAnimation();
 
   useEffect(() => {
+    controller.set("from");
     controller.start("to");
-  }, [controller]);
+  }, [controller, variant]);
 
   const restart = () => {
     controller.set("from");
@@ -21,24 +33,40 @@ export function TextRevealExample() {
   };
 
   return (
-    <div className="p-4 relative h-full flex justify-center items-center">
-      <div className="flex gap-2">
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute right-2 top-2"
-          onClick={restart}
+    <div className="p-8 relative h-full flex justify-center items-center">
+      <div className="absolute right-2 top-2 flex gap-2">
+        <Select
+          defaultValue={variant}
+          onValueChange={(v) => setVariant(v as TextRevealProps["variant"])}
         >
+          <SelectTrigger className="w-28 capitalize">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Variants</SelectLabel>
+              {Object.keys(animationVariants).map((variant) => (
+                <SelectItem
+                  className="capitalize"
+                  key={variant}
+                  value={variant}
+                >
+                  {variant}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <Button size="icon" variant="secondary" onClick={restart}>
           <RotateCwIcon />
         </Button>
       </div>
-
       <TextReveal
         variant={variant}
         controller={controller}
-        className="text-2xl md:text-6xl font-extrabold text-white"
+        className="text-2xl md:text-6xl font-extrabold text-primary"
       >
-        Text Revealing animation made Awesome 🔥
+        Text Revealing animation made Awesome🔥
       </TextReveal>
     </div>
   );
