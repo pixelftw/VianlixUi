@@ -13,8 +13,8 @@ import { visit } from "unist-util-visit";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/pre";
 import Note from "@/components/note";
-import FadeIn from "@/components/motion/text/fadeIn";
 import { PreviewBox } from "@/components/ui/previewBox";
+import { TextRevealExample } from "@/components/examples/textRevealExample";
 
 type MdxFrontmatter = {
   title: string;
@@ -31,7 +31,7 @@ const components = {
   Note,
   PreviewBox,
   // text animation components
-  FadeIn,
+  TextRevealExample,
 };
 
 export async function getMarkdownForSlug(slug: string) {
