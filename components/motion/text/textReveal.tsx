@@ -22,12 +22,10 @@ const slideIn: Variants = {
   from: {
     opacity: 0,
     y: 140,
-    display: "block",
   },
   to: {
     opacity: 1,
     y: 0,
-    display: "block",
   },
 };
 
@@ -35,12 +33,10 @@ const flip: Variants = {
   from: {
     opacity: 0,
     rotateX: 140,
-    display: "block",
   },
   to: {
     opacity: 1,
     rotateX: 0,
-    display: "block",
   },
 };
 
@@ -82,7 +78,7 @@ function TextReveal({
       className={cn("flex flex-wrap", className)}
       initial="from"
       animate={controller ?? "to"}
-      transition={{ staggerChildren: 0.1, ease: "easeInOut" }}
+      transition={{ staggerChildren: 0.1 }}
     >
       {words.map((word, i) => (
         <Word
@@ -106,6 +102,7 @@ function Word({ children, variants, transition }: WordProps) {
   return (
     <span className="overflow-hidden">
       <motion.span
+        className="block"
         variants={variants}
         transition={{ ...defaultTransition, ...transition }}
       >

@@ -18,7 +18,7 @@ import {
 } from "../ui/select";
 
 export function TextRevealExample() {
-  const [variant, setVariant] = useState<TextRevealProps["variant"]>("fadeIn");
+  const [variant, setVariant] = useState<TextRevealProps["variant"]>("slideIn");
 
   const controller = useAnimation();
 
@@ -40,7 +40,7 @@ export function TextRevealExample() {
           onValueChange={(v) => setVariant(v as TextRevealProps["variant"])}
         >
           <SelectTrigger className="w-28 capitalize">
-            <SelectValue placeholder="Select a fruit" />
+            <SelectValue placeholder="Select a Variant" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
@@ -66,7 +66,7 @@ export function TextRevealExample() {
         controller={controller}
         className="text-2xl md:text-6xl font-extrabold text-primary"
       >
-        Text Revealing animation made Awesome🔥
+        Text Revealing animation made Awesome 🔥
       </TextReveal>
     </div>
   );

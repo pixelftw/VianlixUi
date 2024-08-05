@@ -1,5 +1,14 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, TwitterIcon, HexagonIcon, Github } from "lucide-react";
+import {
+  GithubIcon,
+  TwitterIcon,
+  HexagonIcon,
+  Github,
+  ArrowBigUp,
+  Box,
+  BoxIcon,
+  Triangle,
+} from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
@@ -69,8 +78,8 @@ export function Navbar() {
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <HexagonIcon className="w-7 h-7 text-muted-foreground fill-current" />
-      <h2 className="text-md font-bold">template/docs</h2>
+      <Triangle className="w-7 h-7" />
+      <h2 className="text-md font-bold">Vianlix</h2>
     </Link>
   );
 }
