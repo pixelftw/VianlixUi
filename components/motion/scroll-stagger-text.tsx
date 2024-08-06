@@ -63,7 +63,7 @@ interface WordProps extends PropsWithChildren {
 function Word({ children, range, scrollYProgress }: WordProps) {
   const motionY = useTransform(scrollYProgress, range, [50, 0]);
 
-  const y = useSpring(motionY, { stiffness: 1000, damping: 80 });
+  const y = useSpring(motionY, { stiffness: 600, damping: 80 });
 
   return (
     <span className="overflow-hidden">

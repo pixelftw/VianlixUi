@@ -4,7 +4,7 @@ import {
   TextReveal,
   animationVariants,
   type TextRevealProps,
-} from "../motion/text/text-reveal";
+} from "../motion/text-reveal";
 import { useEffect, useState } from "react";
 
 import { PreviewContainer } from "../ui/preview-container";

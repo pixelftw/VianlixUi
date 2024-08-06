@@ -1,4 +1,4 @@
-import { ScrollStaggerText } from "../motion/text/scroll-stagger-text";
+import { ScrollStaggerText } from "../motion/scroll-stagger-text";
 import { PreviewContainer } from "../ui/preview-container";
 
 export function ScrollStaggerTextExample() {

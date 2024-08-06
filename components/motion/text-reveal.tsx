@@ -58,6 +58,7 @@ export interface TextRevealProps extends PropsWithChildren {
 const defaultTransition: AnimationProps["transition"] = {
   ease: cubicBezier(0.33, 1, 0.68, 1),
   duration: 0.6,
+  damping: 30,
 };
 
 export function TextReveal({
