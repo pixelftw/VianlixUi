@@ -60,7 +60,7 @@ const defaultTransition: AnimationProps["transition"] = {
   duration: 0.6,
 };
 
-function TextReveal({
+export function TextReveal({
   children,
   className,
   transition,
@@ -111,5 +111,3 @@ function Word({ children, variants, transition }: WordProps) {
     </span>
   );
 }
-
-export default TextReveal;
