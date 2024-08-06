@@ -8,8 +8,12 @@ export const ROUTES = [
   {
     title: "Components",
     href: "components",
-    items: [{ title: "TextReveal", href: "/text-reveal" }],
+    items: [
+      { title: "TextReveal", href: "/text-reveal" },
+      { title: "ScrollStaggerText", href: "/scroll-stagger-text" },
+    ],
   },
+
   // {
   //   title: "React Hooks",
   //   href: "react-hooks",

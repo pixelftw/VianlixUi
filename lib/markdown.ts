@@ -14,7 +14,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/pre";
 import Note from "@/components/note";
 import { PreviewContainer } from "@/components/ui/preview-container";
-import { TextRevealExample } from "@/components/examples";
+import {
+  TextRevealExample,
+  ScrollStaggerTextExample,
+} from "@/components/examples";
 
 type MdxFrontmatter = {
   title: string;
@@ -32,6 +35,7 @@ const components = {
   PreviewContainer,
   // text animation components
   TextRevealExample,
+  ScrollStaggerTextExample,
 };
 
 export async function getMarkdownForSlug(slug: string) {
