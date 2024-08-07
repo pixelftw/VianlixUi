@@ -17,6 +17,7 @@ import { PreviewContainer } from "@/components/ui/preview-container";
 import {
   TextRevealExample,
   ScrollStaggerTextExample,
+  MagnetExample,
 } from "@/components/examples";
 
 type MdxFrontmatter = {
@@ -35,6 +36,7 @@ const components = {
   PreviewContainer,
   // text animation components
   TextRevealExample,
+  MagnetExample,
   ScrollStaggerTextExample,
 };
 

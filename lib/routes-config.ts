@@ -11,6 +11,7 @@ export const ROUTES = [
     items: [
       { title: "TextReveal", href: "/text-reveal" },
       { title: "ScrollStaggerText", href: "/scroll-stagger-text" },
+      { title: "Magnet", href: "/magnet" },
     ],
   },
 

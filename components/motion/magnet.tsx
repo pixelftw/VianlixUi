@@ -18,13 +18,13 @@ export function Magnet({ children }: PropsWithChildren) {
     }
   };
 
-  const smoothX = useSpring(x, { stiffness: 150, damping: 20, mass: 0.6 });
-  const smoothY = useSpring(y, { stiffness: 150, damping: 20, mass: 0.6 });
-
   const onMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
+
+  const smoothX = useSpring(x, { stiffness: 150, damping: 20, mass: 0.6 });
+  const smoothY = useSpring(y, { stiffness: 150, damping: 20, mass: 0.6 });
 
   return (
     <motion.div
