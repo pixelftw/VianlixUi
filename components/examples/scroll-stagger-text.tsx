@@ -5,7 +5,7 @@ import { StaggerText } from "../motion/stagger-text";
 export function ScrollStaggerTextExample() {
   return (
     <PreviewContainer>
-      <StaggerText variant="flip" className="text-5xl font-bold">
+      <StaggerText as="h1" variant="flip" className="text-5xl font-bold">
         This is some visible content. Scroll down to reveal some more text content
       </StaggerText>
       <ScrollStaggerText className="text-primary">

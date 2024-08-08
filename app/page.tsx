@@ -1,3 +1,5 @@
+import { Magnet } from "@/components/motion/magnet";
+import { StaggerText } from "@/components/motion/stagger-text";
 import { buttonVariants } from "@/components/ui/button";
 import { page_routes } from "@/lib/routes-config";
 import { MoveUpRightIcon } from "lucide-react";
@@ -14,34 +16,43 @@ export default function Home() {
         Follow along on GitHub{" "}
         <MoveUpRightIcon className="w-4 h-4 font-extrabold" />
       </Link>
-      <h1 className="text-3xl font-bold mb-4 sm:text-7xl">
-        Cool Animation Components for your Next project
-      </h1>
-      <p className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground">
-        Vianlix is hub of reusable components and variations build on top of
-        framer motion.
-      </p>
+      <StaggerText
+        as="h1"
+        variant="slideIn"
+        className="text-3xl font-bold mb-4 sm:text-7xl justify-center uppercase"
+      >
+        Beautiful animation components for your React and Next apps
+      </StaggerText>
+      <StaggerText
+        as="p"
+        variant="flip"
+        transition={{ delay: 1 }}
+        className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground justify-center"
+      >
+        Vianlix is a hub of reusable components build with framer motion that you can copy and paste in your NextJs and React applications
+      </StaggerText>
       <div className="flex flex-row items-center gap-5">
-        <Link
-          href={`/docs/${page_routes[0].href}`}
-          className={buttonVariants({ className: "px-6", size: "lg" })}
-        >
-          Get Stared
-        </Link>
-        {/* <Link
-          href="#"
-          className={buttonVariants({
-            variant: "outline",
-            className: "px-6",
-            size: "lg",
-          })}
-        >
-          Customize
-        </Link> */}
+        <Magnet>
+          <Link
+            href={`/docs/${page_routes[0].href}`}
+            className={buttonVariants({ className: "px-6", size: "lg" })}
+          >
+            Get Stared
+          </Link>
+        </Magnet>
+        <Magnet>
+          <Link
+            href="https://github.com/pixelftw/motion-components"
+            className={buttonVariants({
+              variant: "outline",
+              className: "px-6",
+              size: "lg",
+            })}
+          >
+            Github
+          </Link>
+        </Magnet>
       </div>
-      {/* <span className="flex flex-row items-center gap-2 text-zinc-400 text-md mt-7 -mb-12 max-[800px]:mb-12">
-        <TerminalIcon className="w-4 h-4 mr-1" /> ~ npx this-library-name@latest
-      </span> */}
     </div>
   );
 }

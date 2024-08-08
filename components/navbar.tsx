@@ -16,27 +16,12 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
+import { Badge } from "./ui/badge";
 
 export const NAVLINKS = [
   {
     title: "Documentation",
     href: `/docs/${page_routes[0].href}`,
-  },
-  {
-    title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
-    href: "#",
-  },
-  {
-    title: "Community",
-    href: "#",
-  },
-  {
-    title: "Blog",
-    href: "#",
   },
 ];
 
@@ -64,7 +49,7 @@ export function Navbar() {
                 href="https://github.com/pixelftw/motion-components"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
-                <Github className="h-[1.1rem] w-[1.1rem]" />
+                <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
               </Link>
               <ModeToggle />
             </div>
@@ -79,7 +64,7 @@ export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
       <Triangle className="w-7 h-7" />
-      <h2 className="text-md font-bold">Vianlix</h2>
+      <h2 className="text-md font-bold">Vianlix</h2> <Badge variant='outline'>Beta</Badge>
     </Link>
   );
 }

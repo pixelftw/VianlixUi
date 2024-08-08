@@ -48,11 +48,26 @@ export const animationVariants = {
 
 type TVariants = typeof animationVariants;
 
+
+const componentAs = {
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  p: motion.p,
+  span: motion.span
+}
+
+type TComponentAs = typeof componentAs;
+
 export interface StaggerTextProps extends PropsWithChildren {
   className?: string;
   transition?: AnimationProps["transition"];
   variant?: keyof TVariants;
   controller?: AnimationControls;
+  as?: keyof TComponentAs
 }
 
 const defaultTransition: AnimationProps["transition"] = {
@@ -67,6 +82,7 @@ export function StaggerText({
   transition,
   controller,
   variant = "fadeIn",
+  as = 'p'
 }: Readonly<StaggerTextProps>) {
   if (typeof children !== "string") {
     throw Error("StaggerText can only render text content");
@@ -74,12 +90,14 @@ export function StaggerText({
 
   const words = children.split(" ");
 
+  const Text = componentAs[as];
+
   return (
-    <motion.p
+    <Text
       className={cn("flex flex-wrap", className)}
       initial="from"
       animate={controller ?? "to"}
-      transition={{ staggerChildren: 0.1 }}
+      transition={{ staggerChildren: 0.05 }}
     >
       {words.map((word, i) => (
         <Word
@@ -90,7 +108,7 @@ export function StaggerText({
           {word}&nbsp;
         </Word>
       ))}
-    </motion.p>
+    </Text>
   );
 }
 
@@ -108,7 +126,7 @@ function Word({ children, variants, transition }: Readonly<WordProps>) {
         transition={{ ...defaultTransition, ...transition }}
       >
         {children}
-      </motion.span>{" "}
+      </motion.span>
     </span>
   );
 }

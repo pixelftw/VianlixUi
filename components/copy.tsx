@@ -17,7 +17,7 @@ export default function Copy({ content }: { content: string }) {
   }
 
   return (
-    <Button variant="secondary" size="xs" onClick={handleCopy}>
+    <Button variant="secondary" size="xs" aria-label={isCopied ? "copy": "check"} onClick={handleCopy}>
       {isCopied ? (
         <CheckIcon className="w-3 h-3" />
       ) : (
