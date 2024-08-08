@@ -34,7 +34,7 @@ const components = {
   pre: Pre,
   Note,
   PreviewContainer,
-  // text animation components
+  // animation components
   StaggerTextExample,
   MagnetExample,
   ScrollStaggerTextExample,

@@ -13,7 +13,7 @@ export function Footer() {
             Crafted Passionately by
             <Link
               className="px-1 underline underline-offset-2"
-              href="https://github.com/pixelftw"
+              href="https://vikasonweb.vercel.app"
               target="_blank"
             >
               Vikas Yadav

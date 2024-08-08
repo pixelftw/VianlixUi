@@ -29,10 +29,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <Navbar />
-          <main className="sm:container mx-auto w-[85vw] h-auto">
+          <main className="sm:container relative mx-auto w-[85vw] h-auto">
             {children}
           </main>
           <Footer />

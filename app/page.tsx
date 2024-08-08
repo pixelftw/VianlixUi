@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex sm:min-h-[91vh] min-h-[88vh] flex-col items-center justify-center text-center px-2 py-8">
+    <div className="flex sm:min-h-[91vh] min-h-[88vh] flex-col items-center justify-center text-center px-2 py-8 z-0">
       <Link
         href="https://github.com/pixelftw/motion-components"
         target="_blank"
@@ -29,7 +29,8 @@ export default function Home() {
         transition={{ delay: 1 }}
         className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground justify-center"
       >
-        Vianlix is a hub of reusable components build with framer motion that you can copy and paste in your NextJs and React applications
+        Vianlix is a hub of reusable components build with framer motion that
+        you can copy and paste in your NextJs and React applications
       </StaggerText>
       <div className="flex flex-row items-center gap-5">
         <Magnet>
