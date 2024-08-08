@@ -1,6 +1,6 @@
 ---
-title: Text Reveal
-description: An animated text component which renders words in a sentance or paragraph with staggered delay over each word .
+title: Magnet
+description: An animated component that makes the child component magnetic.
 ---
 
 <Tabs defaultValue="preview" className="pt-5 pb-1">
@@ -12,72 +12,70 @@ description: An animated text component which renders words in a sentance or par
      <MagnetExample />
   </TabsContent>
   <TabsContent value="code">
-  ```jsx {6} showLineNumbers
-      import { TextReveal } from '@/component/ui'
-      
-      export default function RootLayout({ children }) {
-        return (
-          <TextReveal
-            variant="fadeIn"
-            className="text-2xl md:text-6xl font-extrabold text-white"
-          >
-            Text Revealing animation made Awesome 🔥
-          </TextReveal>
-        )}
-      ````
+  ```jsx {5} showLineNumbers
+  import { Magnet } from '@/component/ui'
+  
+  export default function RootLayout({ children }) {
+    return (
+      <Magnet>
+        <GithubIcon />
+      </Magnet>
+    )}
+  ````
   </TabsContent>
 </Tabs>
 
 ## Usage
 
-To use the `TextReveal` component, follow these steps:
+To use the `StaggerText` component, follow these steps:
 
 1. **Installation**: Install the necessary package using npm, yarn or pnpm.
    ```bash
-   npm install framer-motion
+   npm i framer-motion clsx tailwind-merge
    ```
-2. **Tailwind CSS**: Install [tailwind css](https://tailwindcss.com/docs/guides/nextjs) or you can customise the styling according to your ui library
+2. **Tailwind CSS**: Install [tailwind css](https://tailwindcss.com/docs/guides/nextjs) or you can customize the styling according to your ui library
 
-3. **Implementation**: Copy paste the below code in your reposatory
+3. **Source code**: Copy & paste the below code into `component/ui/motion` or according to your code structure
 
-   ```jsx
-   function App() {
-     const data = useSession();
-     return (
-       <div>
-         <pre>{JSON.stringify(data, null, 2)}</pre>
-       </div>
-     );
-   }
+   ```jsx showLineNumbers
+    "use client";
+    import { motion, useMotionValue, useSpring } from "framer-motion";
+    import { type MouseEvent as ME, PropsWithChildren, useRef } from "react";
 
-   export default App;
+    export function Magnet({ children }: PropsWithChildren) {
+      const ref = useRef<HTMLDivElement>(null);
+
+      const x = useMotionValue(0);
+      const y = useMotionValue(0);
+
+      const handleMouseMove = (e: ME<HTMLDivElement, MouseEvent>) => {
+        if (ref.current) {
+          const { clientX, clientY } = e;
+          const { left, top, width, height } = ref.current.getBoundingClientRect();
+
+          x.set(clientX - (left + width / 2));
+          y.set(clientY - (top + height / 2));
+        }
+      };
+
+      const onMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+      };
+
+      const smoothX = useSpring(x, { stiffness: 150, damping: 20, mass: 0.6 });
+      const smoothY = useSpring(y, { stiffness: 150, damping: 20, mass: 0.6 });
+
+      return (
+        <motion.div
+          ref={ref}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={onMouseLeave}
+          style={{ x: smoothX, y: smoothY }}
+          className="w-fit"
+        >
+          {children}
+        </motion.div>
+      );
+    }
    ```
-
-## Examples
-
-Here are some examples of how to use the `TextReveal` component in different scenarios.
-
-### Basic Example
-
-```jsx
-const data = useSession();
-console.log(data);
-```
-
-### Advanced Example
-
-```jsx
-const data = useSession({ param: "value" });
-console.log(data);
-```
-
-## Parameters
-
-| Props        | Type     | values                               |
-| ------------ | -------- | ------------------------------------ |
-| `variant`    | `string` | `fadeIn` `slideIn` `flip`            |
-| `paramName2` | `type`   | Another description of the parameter |
-
-## Conclusion
-
-The `TextReveal` Component is a versatile and performant animated resusable component built using framer motion. It can be easily customized based on your project requirement

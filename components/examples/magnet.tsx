@@ -8,17 +8,17 @@ export function MagnetExample() {
       <div className="flex w-full h-full justify-center items-center gap-16">
         <Magnet>
           <div className="bg-orange-600 p-4 rounded-full hover:bg-orange-400">
-            <Bluetooth className="w-20 h-20" />
+            <Bluetooth className="w-20 h-20 text-white" />
           </div>
         </Magnet>
         <Magnet>
           <div className="bg-orange-600 p-4 rounded-full hover:bg-orange-400">
-            <Battery className="w-20 h-20" />
+            <Battery className="w-20 h-20 text-white" />
           </div>
         </Magnet>
         <Magnet>
           <div className="bg-orange-600 p-4 rounded-full hover:bg-orange-400">
-            <Wifi className="w-20 h-20" />
+            <Wifi className="w-20 h-20 text-white" />
           </div>
         </Magnet>
       </div>

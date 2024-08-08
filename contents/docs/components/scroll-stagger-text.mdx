@@ -1,6 +1,6 @@
 ---
-title: Text Reveal
-description: An animated text component which renders words in a sentance or paragraph with staggered delay over each word .
+title: Scroll Stagger Text
+description: An animated component that reveals text on scroll.
 ---
 
 <Tabs defaultValue="preview" className="pt-5 pb-1">
@@ -13,71 +13,120 @@ description: An animated text component which renders words in a sentance or par
   </TabsContent>
   <TabsContent value="code">
   ```jsx {6} showLineNumbers
-      import { TextReveal } from '@/component/ui'
-      
-      export default function RootLayout({ children }) {
-        return (
-          <TextReveal
-            variant="fadeIn"
-            className="text-2xl md:text-6xl font-extrabold text-white"
-          >
-            Text Revealing animation made Awesome 🔥
-          </TextReveal>
-        )}
-      ````
+  import { ScrollStaggerText } from '@/component/ui'
+  
+  export default function RootLayout({ children }) {
+    return (
+      <ScrollStaggerText
+        variant="fadeIn"
+        className="text-2xl md:text-6xl font-extrabold text-white"
+      >
+        Text Revealing animation made Awesome 🔥
+      </ScrollStaggerText>
+    )}
+  ````
   </TabsContent>
 </Tabs>
 
 ## Usage
 
-To use the `TextReveal` component, follow these steps:
+To use the `StaggerText` component, follow these steps:
 
 1. **Installation**: Install the necessary package using npm, yarn or pnpm.
-   ```bash
-   npm install framer-motion
-   ```
-2. **Tailwind CSS**: Install [tailwind css](https://tailwindcss.com/docs/guides/nextjs) or you can customise the styling according to your ui library
-
-3. **Implementation**: Copy paste the below code in your reposatory
-
-   ```jsx
-   function App() {
-     const data = useSession();
-     return (
-       <div>
-         <pre>{JSON.stringify(data, null, 2)}</pre>
-       </div>
-     );
-   }
-
-   export default App;
-   ```
-
-## Examples
-
-Here are some examples of how to use the `TextReveal` component in different scenarios.
-
-### Basic Example
-
-```jsx
-const data = useSession();
-console.log(data);
+```bash
+npm i framer-motion clsx tailwind-merge
 ```
+2. **Tailwind CSS**: Install [tailwind css](https://tailwindcss.com/docs/guides/nextjs) or you can customize the styling according to your ui library
 
-### Advanced Example
+3. **Add util file**: `lib/utils.ts`
+```jsx {5} showLineNumbers
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-```jsx
-const data = useSession({ param: "value" });
-console.log(data);
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+````
+
+4. **Source code**: Copy & paste the below code into `component/ui/motion` or according to your code structure
+
+```jsx showLineNumbers
+"use client";
+import { cn } from "@/lib/utils";
+import {
+  motion,
+  MotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  type UseScrollOptions,
+} from "framer-motion";
+import { PropsWithChildren, useEffect, useRef } from "react";
+
+export interface ScrollStaggerText extends PropsWithChildren {
+  className?: string;
+  container?: UseScrollOptions["container"];
+}
+
+export function ScrollStaggerText({
+  className,
+  children,
+}: ScrollStaggerText) {
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: paragraphRef,
+    offset: ["start end", "center center"],
+  });
+
+  useEffect(
+    () => scrollYProgress.on("change", (v) => console.log(v)),
+    [scrollYProgress]
+  );
+
+  if (typeof children !== "string") {
+    throw Error("ScrollStaggerText only accept children of type string");
+  }
+
+  const words = children.split(" ");
+
+  return (
+    <p
+      ref={paragraphRef}
+      className={cn(
+        "flex flex-wrap text-3xl sm:text-4xl md:text-5xl font-bold",
+        className
+      )}
+    >
+      {words.map((word, i) => (
+        <Word
+          key={word + i}
+          scrollYProgress={scrollYProgress}
+          range={[i / words.length, (i + 1) / words.length]}
+        >
+          {word}&nbsp;
+        </Word>
+      ))}
+    </p>
+  );
+}
+
+interface WordProps extends PropsWithChildren {
+  range: [number, number];
+  scrollYProgress: MotionValue<number>;
+}
+
+function Word({ children, range, scrollYProgress }: WordProps) {
+  const motionY = useTransform(scrollYProgress, range, [50, 0]);
+
+  const y = useSpring(motionY, { stiffness: 600, damping: 80 });
+
+  return (
+    <span className="overflow-hidden">
+      <motion.span style={{ y }} className="block">
+        {children}
+      </motion.span>
+    </span>
+  );
+}
 ```
-
-## Parameters
-
-| Props        | Type     | values                               |
-| ------------ | -------- | ------------------------------------ |
-| `variant`    | `string` | `fadeIn` `slideIn` `flip`            |
-| `paramName2` | `type`   | Another description of the parameter |
-
-## Conclusion
-
-The `TextReveal` Component is a versatile and performant animated resusable component built using framer motion. It can be easily customized based on your project requirement

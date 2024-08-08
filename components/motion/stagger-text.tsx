@@ -67,7 +67,7 @@ export function StaggerText({
   transition,
   controller,
   variant = "fadeIn",
-}: StaggerTextProps) {
+}: Readonly<StaggerTextProps>) {
   if (typeof children !== "string") {
     throw Error("StaggerText can only render text content");
   }
@@ -99,7 +99,7 @@ interface WordProps extends PropsWithChildren {
   transition: StaggerTextProps["transition"];
 }
 
-function Word({ children, variants, transition }: WordProps) {
+function Word({ children, variants, transition }: Readonly<WordProps>) {
   return (
     <span className="overflow-hidden">
       <motion.span

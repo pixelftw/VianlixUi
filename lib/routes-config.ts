@@ -9,9 +9,9 @@ export const ROUTES = [
     title: "Components",
     href: "components",
     items: [
+      { title: "Magnet", href: "/magnet" },
       { title: "StaggerText", href: "/stagger-text" },
       { title: "ScrollStaggerText", href: "/scroll-stagger-text" },
-      { title: "Magnet", href: "/magnet" },
     ],
   },
 

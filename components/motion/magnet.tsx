@@ -2,7 +2,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { type MouseEvent as ME, PropsWithChildren, useRef } from "react";
 
-export function Magnet({ children }: PropsWithChildren) {
+export function Magnet({ children }: Readonly<PropsWithChildren>) {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);

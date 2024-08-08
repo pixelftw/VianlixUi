@@ -1,10 +1,13 @@
 import { PreviewContainer } from "../ui/preview-container";
 import { ScrollStaggerText } from "../motion/scroll-stagger-text";
+import { StaggerText } from "../motion/stagger-text";
 
 export function ScrollStaggerTextExample() {
   return (
     <PreviewContainer>
-      <h4 className="text-center h-40">Scroll To reveal the text</h4>
+      <StaggerText variant="flip" className="text-5xl font-bold">
+        This is some visible content. Scroll down to reveal some more text content
+      </StaggerText>
       <ScrollStaggerText className="text-primary">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur magni.
       </ScrollStaggerText>
