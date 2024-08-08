@@ -48,7 +48,7 @@ export const animationVariants = {
 
 type TVariants = typeof animationVariants;
 
-export interface TextRevealProps extends PropsWithChildren {
+export interface StaggerTextProps extends PropsWithChildren {
   className?: string;
   transition?: AnimationProps["transition"];
   variant?: keyof TVariants;
@@ -61,15 +61,15 @@ const defaultTransition: AnimationProps["transition"] = {
   damping: 30,
 };
 
-export function TextReveal({
+export function StaggerText({
   children,
   className,
   transition,
   controller,
   variant = "fadeIn",
-}: TextRevealProps) {
+}: StaggerTextProps) {
   if (typeof children !== "string") {
-    throw Error("FadeInTextReveal can only render text content");
+    throw Error("StaggerText can only render text content");
   }
 
   const words = children.split(" ");
@@ -96,7 +96,7 @@ export function TextReveal({
 
 interface WordProps extends PropsWithChildren {
   variants: Variants;
-  transition: TextRevealProps["transition"];
+  transition: StaggerTextProps["transition"];
 }
 
 function Word({ children, variants, transition }: WordProps) {

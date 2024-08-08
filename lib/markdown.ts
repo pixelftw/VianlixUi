@@ -15,9 +15,9 @@ import Pre from "@/components/pre";
 import Note from "@/components/note";
 import { PreviewContainer } from "@/components/ui/preview-container";
 import {
-  TextRevealExample,
   ScrollStaggerTextExample,
   MagnetExample,
+  StaggerTextExample,
 } from "@/components/examples";
 
 type MdxFrontmatter = {
@@ -35,7 +35,7 @@ const components = {
   Note,
   PreviewContainer,
   // text animation components
-  TextRevealExample,
+  StaggerTextExample,
   MagnetExample,
   ScrollStaggerTextExample,
 };
