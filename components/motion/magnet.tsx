@@ -23,8 +23,8 @@ export function Magnet({ children }: Readonly<PropsWithChildren>) {
     y.set(0);
   };
 
-  const smoothX = useSpring(x, { stiffness: 150, damping: 20, mass: 0.6 });
-  const smoothY = useSpring(y, { stiffness: 150, damping: 20, mass: 0.6 });
+  const smoothX = useSpring(x, { stiffness: 600, damping: 60, mass: 0.1 });
+  const smoothY = useSpring(y, { stiffness: 600, damping: 60, mass: 0.1 });
 
   return (
     <motion.div
