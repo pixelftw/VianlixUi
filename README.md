@@ -1,1 +1,1 @@
-## Update Soon !
+[Checkout components](https://vianlix.com/docs/components/magnet)
