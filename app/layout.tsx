@@ -8,10 +8,10 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Docs stater template",
+  title: "Set of reusable animation components build with framer motion",
   metadataBase: new URL("https://docstemplate.vercel.app/"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "Beautifully crafted Framer motion components that you can plug and play into react projects",
 };
 
 export default function RootLayout({
@@ -25,11 +25,7 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} font-regular`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="sm:container relative mx-auto w-[85vw] h-auto">
             {children}
