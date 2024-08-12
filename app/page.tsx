@@ -22,14 +22,11 @@ export default function Home() {
       >
         Beautiful animation components for your React and Next apps
       </StaggerText>
-      <StaggerText
-        as="p"
-        variant="flip"
-        transition={{ delay: 1 }}
-        className="mb-8 sm:text-xl max-w-[800px] text-muted-foreground justify-center"
-      >
-        Vianlix is a hub of reusable components build with framer motion that
-        you can copy and paste in your NextJs and React applications
+      <StaggerText className="mb-8 sm:text-xl max-w-[800px]  text-muted-foreground justify-center">
+        Vianlix is a collection of reusable components built with Framer Motion,
+        designed for seamless integration into your Next.js and React
+        applications. Simply copy and paste these components to enhance your
+        projects with smooth, high-performance animations
       </StaggerText>
       <div className="flex flex-row items-center gap-5">
         <Link
