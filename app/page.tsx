@@ -1,4 +1,3 @@
-import { Magnet } from "@/components/motion/magnet";
 import { StaggerText } from "@/components/motion/stagger-text";
 import { buttonVariants } from "@/components/ui/button";
 import { page_routes } from "@/lib/routes-config";
@@ -33,26 +32,22 @@ export default function Home() {
         you can copy and paste in your NextJs and React applications
       </StaggerText>
       <div className="flex flex-row items-center gap-5">
-        <Magnet>
-          <Link
-            href={`/docs/${page_routes[0].href}`}
-            className={buttonVariants({ className: "px-6", size: "lg" })}
-          >
-            Get Stared
-          </Link>
-        </Magnet>
-        <Magnet>
-          <Link
-            href="https://github.com/pixelftw/motion-components"
-            className={buttonVariants({
-              variant: "outline",
-              className: "px-6",
-              size: "lg",
-            })}
-          >
-            Github
-          </Link>
-        </Magnet>
+        <Link
+          href={`/docs/${page_routes[0].href}`}
+          className={buttonVariants({ className: "px-6", size: "lg" })}
+        >
+          Get Stared
+        </Link>
+        <Link
+          href="https://github.com/pixelftw/motion-components"
+          className={buttonVariants({
+            variant: "outline",
+            className: "px-6",
+            size: "lg",
+          })}
+        >
+          Github
+        </Link>
       </div>
     </div>
   );
