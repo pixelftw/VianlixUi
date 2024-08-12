@@ -9,6 +9,10 @@ export function Magnet({ children }: Readonly<PropsWithChildren>) {
   const y = useMotionValue(0);
 
   const handleMouseMove = (e: ME<HTMLDivElement, MouseEvent>) => {
+    if (window.innerWidth < 480) {
+      return;
+    }
+
     if (ref.current) {
       const { clientX, clientY } = e;
       const { left, top, width, height } = ref.current.getBoundingClientRect();
