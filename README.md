@@ -1,1 +1,1 @@
-[Checkout components](https://vianlix-ui.vercell.app/docs/components/magnet)
+[Checkout components](https://vianlix-ui.vercel.app/docs/components/magnet)
